@@ -1,48 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Fantasy MMO</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMO Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Welcome to the Fantasy MMO</h1>
-  <h2>Register</h2>
-  <form id="register-form">
-    <input type="text" placeholder="Username" name="username" required />
-    <input type="password" placeholder="Password" name="password" required />
-    <button type="submit">Register</button>
-  </form>
+    <div class="container">
+        <!-- Login/Register Box -->
+        <div id="auth-box" class="auth-box">
+            <h2>Welcome to the Fantasy MMO</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="register()">Register</button>
+            <button onclick="login()">Login</button>
+            <p id="message"></p>
+        </div>
 
-  <h2>Login</h2>
-  <form id="login-form">
-    <input type="text" placeholder="Username" name="username" required />
-    <input type="password" placeholder="Password" name="password" required />
-    <button type="submit">Login</button>
-  </form>
+        <!-- User Profile (Hidden by Default) -->
+        <div id="user-info" class="user-info hidden">
+            <h2>Welcome, <span id="display-username"></span></h2>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
 
-  <script>
-    const apiURL = 'https://your-render-backend-url.com'; // Update this later
-
-    document.getElementById('register-form').onsubmit = async (e) => {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target));
-      const res = await fetch(`${apiURL}/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      alert(await res.text());
-    };
-
-    document.getElementById('login-form').onsubmit = async (e) => {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target));
-      const res = await fetch(`${apiURL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      alert(await res.text());
-    };
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
