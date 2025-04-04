@@ -8,15 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <!-- Login/Register Box -->
-        <div id="auth-box" class="auth-box">
-            <h2>Welcome to the Fantasy MMO</h2>
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-            <button onclick="register()">Register</button>
-            <button onclick="login()">Login</button>
-            <p id="message"></p>
-        </div>
+<!-- Login/Register Form -->
+<div id="login-register-form">
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="register()">Register</button>
+    <button onclick="login()">Login</button>
+    <div id="message"></div>
+</div>
+
+<!-- Logged-In User UI -->
+<div id="user-ui" style="display: none;">
+    <p>Welcome, <span id="display-username"></span>!</p>
+    <button onclick="logout()">Logout</button>
+</div>
+
 
         <!-- User Profile (Hidden by Default) -->
         <div id="user-info" class="user-info hidden">

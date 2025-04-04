@@ -67,3 +67,15 @@ body {
     transform: scale(1);
     opacity: 1;
 }
+/* Hide user UI until logged in */
+body.show-user #login-register-form {
+    display: none;
+}
+
+body.show-user #user-ui {
+    display: block;
+}
+
+#user-ui {
+    display: none;
+}
