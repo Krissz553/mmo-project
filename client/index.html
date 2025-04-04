@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fantasy MMO</title>
+</head>
+<body>
+  <h1>Welcome to the Fantasy MMO</h1>
+  <h2>Register</h2>
+  <form id="register-form">
+    <input type="text" placeholder="Username" name="username" required />
+    <input type="password" placeholder="Password" name="password" required />
+    <button type="submit">Register</button>
+  </form>
+
+  <h2>Login</h2>
+  <form id="login-form">
+    <input type="text" placeholder="Username" name="username" required />
+    <input type="password" placeholder="Password" name="password" required />
+    <button type="submit">Login</button>
+  </form>
+
+  <script>
+    const apiURL = 'https://your-render-backend-url.com'; // Update this later
+
+    document.getElementById('register-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch(`${apiURL}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      alert(await res.text());
+    };
+
+    document.getElementById('login-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch(`${apiURL}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      alert(await res.text());
+    };
+  </script>
+</body>
+</html>
